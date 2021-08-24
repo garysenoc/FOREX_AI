@@ -1,0 +1,29 @@
+PipValue = 1
+StopLoss = .020
+Spread  = .003
+
+
+if current_positions == NOT_HELD:
+    if ACTION_TAKEN = BUY:
+        REWARD = REWARD
+        UPDATE_POSITION:
+            CURRENT_POSITION = BUY
+            POSITION_PRICE = M1_BID_CLOSE_PRICE + SPREAD
+            POSTION_STOP_LOSS = M1_BID_CLOSE_PRICE - STOPLOSS
+        GET_PRICING_CANDLES
+        GET_ORDER_BOOK
+    
+    elif ACTION_TAKEN == SELL:
+        REWARD = REWARD
+        UPDATE_POSITION:
+            CURRENT_POSITION = SELL
+            POSITION_PRICE = M1_BID_CLOSE_PRICE - SPREAD
+            POSITION_STOP_LOSS = M1_BID_CLOSE_PRICE + STOPLOSS
+        GET_PRICING_CANDLES
+        GET_ORDER_BOOK
+    
+    elif ACTION_TAKEN == CLOSE:
+        REWARD = REWARD - (PIP_VALUE * STOPLOSS * 1000)
+        GET_PRICING_CANDLES 
+        GET_ORDER_BOOK
+        
